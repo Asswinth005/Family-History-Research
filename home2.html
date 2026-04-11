@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancestry | Genealogy Research Portal & Archive</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%2399755E' d='M256 32c-14.8 0-26.7 12-26.7 26.7v26.7c0 14.7 11.9 26.7 26.7 26.7s26.7-12 26.7-26.7V58.7c0-14.7-11.9-26.7-26.7-26.7zm117.3 74.7c-10.4 0-18.8 8.4-18.8 18.8v18.8c0 10.4 8.4 18.8 18.8 18.8s18.8-8.4 18.8-18.8v-18.8c0-10.4-8.4-18.8-18.8-18.8zm-234.6 0c-10.4 0-18.8 8.4-18.8 18.8v18.8c0 10.4 8.4 18.8 18.8 18.8s18.8-8.4 18.8-18.8v-18.8c0-10.4-8.4-18.8-18.8-18.8zM256 128c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128-57.3-128-128-128zm0 213.3c-47.1 0-85.3-38.2-85.3-85.3s38.2-85.3 85.3-85.3 85.3 38.2 85.3 85.3-38.2 85.3-85.3 85.3z'/></svg>">
+    <meta name="description" content="Professional genealogy research services, sample reports, client portal, and archival document access.">
+    
+    <!-- Tailwind CSS -->
+    <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'heritage-wood': '#8B5E3C',
+                        'heritage-wood-light': '#B88A5E',
+                        'heritage-wood-dark': '#5C3A21',
+                        'heritage-parchment': '#F9F1E0',
+                        'heritage-ink': '#2C2418',
+                        'heritage-sepia': '#E8DCC8',
+                        'heritage-gold': '#C6A43F',
+                        'heritage-burgundy': '#6A2E35',
+                    },
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Lato', 'system-ui', 'sans-serif'],
+                        'script': ['Great Vibes', 'cursive'],
+                        'alt-serif': ['Libre Baskerville', 'serif'],
+                    },
+                    backgroundImage: {
+                        'parchment': "url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 800\"%3E%3Crect width=\"1200\" height=\"800\" fill=\"%23F9F1E0\"/%3E%3C/svg%3E')",
+                        'tree-ring': "radial-gradient(circle at 20% 40%, rgba(139,94,60,0.08) 0%, transparent 50%)",
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s ease-out',
+                        'slow-spin': 'spin 25s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Great+Vibes&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom styling - matching reference exactly */
+        body {
+            background: #F9F1E0;
+            font-family: 'Lato', sans-serif;
+            color: #2C2418;
+        }
+        
+        .dark body {
+            background: #1E1B16;
+            color: #E8DCC8;
+        }
+        
+        h1, h2, h3, h4, .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .serif-text {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E8DCC8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8B5E3C;
+            border-radius: 4px;
+        }
+        
+        /* Navigation - Heritage Style */
+        .nav-item {
+            position: relative;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            color: #2C2418;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+        
+        .dark .nav-item {
+            color: #E8DCC8;
+        }
+        
+        .nav-item:hover {
+            color: #8B5E3C;
+        }
+        
+        .dark .nav-item:hover {
+            color: #C6A43F;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8B5E3C;
+            transition: width 0.3s ease;
+        }
+        
+        .dark .nav-item::after {
+            background: #C6A43F;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: #FFF8EF;
+            border-radius: 8px;
+            padding: 0.75rem 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #D4C4A8;
+        }
+        
+        .dark .dropdown-menu {
+            background: #2A241C;
+            border-color: #5C4A32;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.7rem 1.5rem;
+            color: #2C2418;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.2s;
+        }
+        
+        .dark .dropdown-item {
+            color: #E8DCC8;
+        }
+        
+        .dropdown-item:hover {
+            background: #E8DCC8;
+            color: #8B5E3C;
+            padding-left: 1.75rem;
+        }
+        
+        .dark .dropdown-item:hover {
+            background: #3E3324;
+            color: #C6A43F;
+        }
+        
+        .dropdown-item i {
+            margin-right: 0.75rem;
+            width: 20px;
+            color: #8B5E3C;
+        }
+        
+        /* Auth Buttons */
+        .auth-btn {
+            padding: 0.5rem 1.6rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-family: 'Libre Baskerville', serif;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+        
+        .auth-btn.login {
+            background: transparent;
+            border: 1px solid #C6A43F;
+            color: #8B5E3C;
+        }
+        
+        .dark .auth-btn.login {
+            border-color: #C6A43F;
+            color: #C6A43F;
+        }
+        
+        .auth-btn.login:hover {
+            background: #8B5E3C;
+            border-color: #8B5E3C;
+            color: white;
+        }
+        
+        .auth-btn.signup {
+            background: #8B5E3C;
+            color: white;
+            border: none;
+        }
+        
+        .dark .auth-btn.signup {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .auth-btn.signup:hover {
+            background: #5C3A21;
+            transform: translateY(-2px);
+        }
+        
+        /* Toggle Buttons */
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: #E8DCC8;
+            color: #5C3A21;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .dark .toggle-btn {
+            background: #2A241C;
+            color: #C6A43F;
+        }
+        
+        .toggle-btn:hover {
+            background: #8B5E3C;
+            color: white;
+        }
+        
+        /* Archive Card Style */
+        .archive-card {
+            background: #FFF8EF;
+            border: 1px solid #E8DCC8;
+            transition: all 0.4s;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        
+        .dark .archive-card {
+            background: #2A241C;
+            border-color: #5C4A32;
+        }
+        
+        .archive-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(139,94,60,0.15);
+            border-color: #C6A43F;
+        }
+        
+        /* Sample Report Card */
+        .report-preview {
+            background: #FFFEF8;
+            border-left: 4px solid #C6A43F;
+            transition: all 0.3s;
+        }
+        
+        .dark .report-preview {
+            background: #1F1B16;
+        }
+        
+        /* Client Portal Card */
+        .portal-card {
+            background: linear-gradient(135deg, rgba(198,164,63,0.08) 0%, rgba(139,94,60,0.05) 100%);
+            border-radius: 16px;
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Button Primary */
+        .btn-heritage {
+            background: #8B5E3C;
+            color: white;
+            padding: 0.85rem 2rem;
+            font-family: 'Libre Baskerville', serif;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+        }
+        
+        .dark .btn-heritage {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .btn-heritage:hover {
+            background: #5C3A21;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -8px rgba(0,0,0,0.3);
+        }
+        
+        .btn-outline {
+            border: 1px solid #C6A43F;
+            background: transparent;
+            color: #8B5E3C;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Libre Baskerville', serif;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline:hover {
+            background: #C6A43F;
+            color: white;
+        }
+        
+        .dark .btn-outline {
+            color: #C6A43F;
+        }
+        /* ========== RTL FIXES ========== */
+[dir="rtl"] {
+    direction: rtl;
+}
+
+/* Fix for logo space-x-3 */
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+/* Fix for gap-8 on navigation */
+[dir="rtl"] .gap-8 {
+    gap: 2rem;
+}
+
+/* Fix for ml-8 (margin left) */
+[dir="rtl"] .ml-8 {
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+/* Fix for ml-4 */
+[dir="rtl"] .ml-4 {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+/* Fix for mr-2 (icons) */
+[dir="rtl"] .mr-2 {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+[dir="rtl"] .mr-1 {
+    margin-right: 0;
+    margin-left: 0.25rem;
+}
+
+/* Fix for dropdown menu position */
+[dir="rtl"] .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+/* Fix for dropdown item icon */
+[dir="rtl"] .dropdown-item i {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+/* Fix for auth buttons gap */
+[dir="rtl"] .flex.items-center.gap-3 {
+    gap: 0.75rem;
+}
+
+/* Fix for toggle buttons group */
+[dir="rtl"] .desktop-toggle-group {
+    flex-direction: row;
+}
+
+/* Fix for border left on active dropdown item */
+[dir="rtl"] .dropdown-item[style*="border-left"] {
+    border-left: none !important;
+    border-right: 3px solid #C6A43F !important;
+}
+
+        /* Fix for hero section border left */
+        [dir="rtl"] .border-l-4 {
+            border-left-width: 0;
+            border-right-width: 4px;
+        }
+
+        [dir="rtl"] .rounded-r-lg {
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        /* Fix for heritage line margin */
+        [dir="rtl"] .heritage-line {
+            margin: 1rem auto;
+        }
+
+        /* Fix for footer border left */
+        [dir="rtl"] .border-l-4 {
+            border-left-width: 0;
+            border-right-width: 4px;
+        }
+
+        [dir="rtl"] .pl-3 {
+            padding-left: 0;
+            padding-right: 0.75rem;
+        }
+
+        /* Footer RTL Fixes */
+        [dir="rtl"] .footer-heading {
+            border-right: 4px solid #C6A43F;
+            border-left: none;
+            padding-right: 0.75rem;
+            padding-left: 0;
+            text-align: right;
+
+        }
+        
+        [dir="rtl"] .footer-contact-item {
+            gap: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        [dir="rtl"] .footer-contact-item i {
+            margin: 0;
+        }
+        
+        @media (min-width: 768px) {
+            [dir="rtl"] .footer-contact-item {
+                justify-content: flex-start;
+            }
+            [dir="rtl"] .md\:text-left {
+                text-align: right;
+            }
+            [dir="rtl"] .md\:justify-start {
+                justify-content: flex-start;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            [dir="rtl"] .footer-contact-item {
+                justify-content: center;
+            }
+        }
+        
+        /* Hero Section RTL Fixes */
+        [dir="rtl"] .lg\:text-left {
+            text-align: right;
+        }
+        
+        [dir="rtl"] .hero-svg-underline {
+            transform: scaleX(-1);
+        }
+        
+        /* Footer */
+        footer {
+            background: #2C2418;
+            color: #E8DCC8;
+            border-top: 1px solid #C6A43F;
+        }
+        
+        .dark footer {
+            background: #1A1610;
+        }
+        
+        footer a:hover {
+            color: #C6A43F;
+        }
+        
+        .social-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(200,180,140,0.15);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid #C6A43F40;
+            border-radius: 8px;
+        }
+        
+        .social-icon:hover {
+            background: #C6A43F;
+            color: #2C2418;
+            transform: translateY(-3px);
+        }
+        
+        .heritage-line {
+            width: 70px;
+            height: 3px;
+            background: #C6A43F;
+            margin: 1rem 0;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            background: #FFF8EF;
+            border-top: 1px solid #D4C4A8;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .dark .mobile-menu {
+            background: #2A241C;
+            border-color: #5C4A32;
+        }
+        
+        .mobile-menu.open {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            font-family: 'Libre Baskerville', serif;
+            border-bottom: 1px solid #E8DCC8;
+            color: #2C2418;
+        }
+        
+        .dark .mobile-menu-item {
+            color: #E8DCC8;
+            border-bottom-color: #3E3324;
+        }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+            background: #F5EDE0;
+        }
+        
+        .dark .mobile-dropdown-content {
+            background: #211C14;
+        }
+        
+        .mobile-dropdown-content.show {
+            max-height: 250px;
+        }
+        
+        .mobile-auth-btn {
+            border-radius: 6px;
+        }
+        
+        @media (max-width: 1279px) {
+            .desktop-toggle-group {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-heritage-parchment dark:bg-[#1E1B16]">
+
+    <!-- ========== HEADER - EXACT MATCH FROM REFERENCE ========== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#FFF8EF]/95 dark:bg-[#1E1B16]/95 backdrop-blur-md border-b border-heritage-gold/30">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 bg-heritage-gold flex items-center justify-center rounded-lg">
+                        <i class="fas fa-dna text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-heading font-bold text-heritage-gold">Ancestry</span>
+                    </div>
+                </a>
+
+                <div class="hidden xl:flex items-center">
+                    <div class="flex items-center gap-8">
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1">Home <i class="fas fa-chevron-down text-[10px]"></i></button>
+                            <div class="dropdown-menu">
+                                <a href="index.html" class="dropdown-item" style="background:#E8DCC8; color:#8B5E3C; font-weight:600;"><i class="fas fa-home"></i> Home 1</a>
+                                <a href="home2.html" class="dropdown-item"><i class="fas fa-home"></i> Home 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item">About</a>
+                        <a href="service.html" class="nav-item">Services</a>
+                        <a href="research.html" class="nav-item">Research</a>
+                        <a href="guide.html" class="nav-item">Guides</a>
+                        <a href="contact.html" class="nav-item">Contact</a>
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1">Dashboard <i class="fas fa-chevron-down text-[10px]"></i></button>
+                            <div class="dropdown-menu">
+                                <a href="client.html" class="dropdown-item"><i class="fas fa-user"></i> Client</a>
+                                <a href="Admin.html" class="dropdown-item"><i class="fas fa-user-shield"></i> Admin</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-3 ml-8">
+                        <a href="login.html" class="auth-btn login">Login</a>
+                        <a href="signup.html" class="auth-btn signup">Sign Up</a>
+                    </div>
+                    
+                    <div class="flex gap-2 ml-4 desktop-toggle-group">
+                        <button id="theme-toggle" class="toggle-btn" title="Theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                        <button id="rtl-toggle" class="toggle-btn" title="RTL">⇄</button>
+                    </div>
+                </div>
+
+                <button id="mobile-toggle" class="xl:hidden text-heritage-ink dark:text-heritage-gold p-2 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu xl:hidden">
+                <div class="mobile-dropdown">
+                                    <button class="mobile-dropdown-btn flex justify-between items-center w-full mobile-menu-item text-[15px] py-3">
+                                        Home 
+                                        <i class="fas fa-chevron-down text-xs"></i>
+                                    </button>
+
+                                    <div class="mobile-dropdown-content">
+                        <a href="index.html" class="block px-8 py-2 text-[14px]">Home 1</a>
+                        <a href="home2.html" class="block px-8 py-2 text-[14px]">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="mobile-menu-item">About Us</a>
+                <a href="service.html" class="mobile-menu-item">Services</a>
+                <a href="research.html" class="mobile-menu-item">Research</a>
+                <a href="guide.html" class="mobile-menu-item">Guides</a>
+                <a href="contact.html" class="mobile-menu-item">Contact</a>
+                
+                <!-- Dashboard Dropdown with Client and Admin -->
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex justify-between w-full mobile-menu-item">Dashboard <i class="fas fa-chevron-down"></i></button>
+                    <div class="mobile-dropdown-content">
+                        <a href="client.html" class="block px-8 py-3 text-sm hover:bg-heritage-gold/10 transition">
+                            <i class="fas fa-user mr-2 text-heritage-gold"></i> Client
+                        </a>
+                        <a href="admin.html" class="block px-8 py-3 text-sm hover:bg-heritage-gold/10 transition">
+                            <i class="fas fa-user-shield mr-2 text-heritage-gold"></i> Admin 
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-3 p-6">
+                    <a href="login.html" class="mobile-auth-btn login text-center py-3 border border-heritage-gold rounded-lg">Login</a>
+                    <a href="signup.html" class="mobile-auth-btn signup text-center py-3 bg-heritage-wood text-white rounded-lg">Sign Up</a>
+                </div>
+                <div class="flex justify-center gap-3 p-6 border-t border-heritage-gold/20">
+                    <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                    <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION - ALTERNATIVE DESIGN (MATCHING REFERENCE STYLE) ========== -->
+    <section class="relative pt-40 pb-24 md:pt-52 md:pb-32 overflow-hidden">
+        <!-- Background with vintage paper texture -->
+        <div class="absolute inset-0 bg-heritage-parchment dark:bg-[#1E1B16]"></div>
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')]"></div>
+        
+       
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-block bg-heritage-wood/10 dark:bg-heritage-gold/10 backdrop-blur-sm px-5 py-2 mb-6 border-l-4 border-heritage-gold rounded-r-lg">
+                        <span class="text-heritage-wood dark:text-heritage-gold font-serif tracking-widest text-sm font-semibold">SINCE 2008</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-heritage-ink dark:text-white leading-tight">
+                        Discover Your 
+                        <span class="text-heritage-gold relative inline-block">
+                            Family Legacy
+                                <path d="M0 4L200 4" stroke="currentColor" stroke-width="2" stroke-dasharray="6 4"/>
+                            </svg>
+                        </span>
+                    </h1>
+                    <div class="heritage-line mx-auto lg:mx-0 my-6"></div>
+                    <p class="text-lg md:text-xl text-heritage-ink/80 dark:text-heritage-parchment/80 font-serif leading-relaxed mb-8">
+                        Professional genealogists trace your ancestry using original records, DNA analysis, and global archives. 
+                        Your story matters — let us help you preserve it for generations.
+                    </p>
+                    
+                    <!-- Feature list -->
+                    <div class="flex flex-wrap gap-4 mb-8 justify-center lg:justify-start">
+                        <div class="flex items-center gap-2 bg-white/50 dark:bg-heritage-ink/30 px-3 py-1.5 rounded-full">
+                            <i class="fas fa-check-circle text-heritage-gold text-sm"></i>
+                            <span class="text-sm font-serif">Certified Genealogists</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/50 dark:bg-heritage-ink/30 px-3 py-1.5 rounded-full">
+                            <i class="fas fa-check-circle text-heritage-gold text-sm"></i>
+                            <span class="text-sm font-serif">Global Archives</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/50 dark:bg-heritage-ink/30 px-3 py-1.5 rounded-full">
+                            <i class="fas fa-check-circle text-heritage-gold text-sm"></i>
+                            <span class="text-sm font-serif">DNA Integration</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <button class="btn-heritage"><i class="fas fa-search mr-2"></i> Start Research</button>
+                        <button class="btn-outline"><i class="fas fa-file-alt mr-2"></i> View Sample Reports</button>
+                    </div>
+                </div>
+                
+               <!-- Right Content - Vintage Family Photo Collage (Straight Aligned) -->
+                <div class="relative">
+                    <!-- Main image frame - removed rotate-1 -->
+                    <div class="relative bg-heritage-sepia dark:bg-heritage-ink/50 p-3 rounded-lg shadow-2xl">
+                        <img src="/assest/url1.jpg" 
+                             alt="Vintage family photo" 
+                             class="rounded-md w-full h-80 object-cover sepia-[0.3]">
+                        
+                        <!-- Vintage photo corners -->
+                        <div class="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-heritage-gold rounded-tl-md"></div>
+                        <div class="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-heritage-gold rounded-tr-md"></div>
+                        <div class="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-heritage-gold rounded-bl-md"></div>
+                        <div class="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-heritage-gold rounded-br-md"></div>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========== SECURE CLIENT PORTAL SECTION ========== -->
+    <section class="py-16 bg-heritage-parchment dark:bg-[#1E1B16] border-b border-heritage-gold/20">
+        <div class="container mx-auto px-6">
+            <div class="portal-card p-8 md:p-12 rounded-2xl border border-heritage-gold/30">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <div class="inline-block bg-heritage-gold/20 px-4 py-1 rounded-full mb-4">
+                            <span class="text-heritage-wood dark:text-heritage-gold text-sm font-serif">SECURE ACCESS</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold text-heritage-ink dark:text-white mb-4">Client Portal: <span class="text-heritage-gold">Your Family Archive</span></h2>
+                        <p class="text-lg font-serif text-heritage-ink/80 dark:text-heritage-parchment/80 mb-6">Upload historical documents, share photos, collaborate with our genealogists, and access your research reports in a private, encrypted vault.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3"><i class="fas fa-cloud-upload-alt text-heritage-gold text-xl"></i> <span>Upload scans, photos & handwritten letters</span></li>
+                            <li class="flex items-center gap-3"><i class="fas fa-comments text-heritage-gold text-xl"></i> <span>Direct messaging with research team</span></li>
+                            <li class="flex items-center gap-3"><i class="fas fa-chart-line text-heritage-gold text-xl"></i> <span>Real-time research progress tracking</span></li>
+                            <li class="flex items-center gap-3"><i class="fas fa-shield-alt text-heritage-gold text-xl"></i> <span>Bank-grade encryption & privacy</span></li>
+                        </ul>
+                        <button class="btn-heritage"><i class="fas fa-sign-in-alt mr-2"></i> Access Your Portal</button>
+                    </div>
+                    <div class="relative">
+                        <img src="/assest/bp.jpg" alt="Secure document portal" class="rounded-xl shadow-2xl border-4 border-heritage-gold/30">
+                        <div class="absolute -bottom-4 -right-4 bg-heritage-gold text-heritage-ink px-4 py-2 rounded-lg text-sm font-serif shadow-lg">Encrypted Vault</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SAMPLE RESEARCH REPORT SHOWCASE ========== -->
+    <section class="py-20 bg-[#FFF5EA] dark:bg-[#251F17]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-heritage-gold font-serif text-sm tracking-widest border-b-2 border-heritage-gold inline-block pb-1">RESEARCH EXCELLENCE</span>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold mt-4 text-heritage-ink dark:text-white">Sample <span class="text-heritage-wood dark:text-heritage-gold">Genealogy Reports</span></h2>
+                <p class="text-lg max-w-2xl mx-auto mt-3 font-serif">View examples of our detailed, source-cited family histories</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="report-preview p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-3">
+                        <i class="fas fa-file-alt text-heritage-gold text-3xl"></i>
+                        <span class="text-xs bg-heritage-gold/20 px-2 py-1 rounded">PDF Sample</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">The O'Connell Lineage</h3>
+                    <p class="text-sm font-serif opacity-75 mb-3">17th Century Irish Ancestry | 24 pages</p>
+                    <p class="text-sm font-serif mb-4">Includes birth registries, land records, and DNA correlation charts with full citations.</p>
+                    <button class="text-heritage-gold text-sm font-semibold hover:underline">Preview Sample →</button>
+                </div>
+                <div class="report-preview p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-3">
+                        <i class="fas fa-scroll text-heritage-gold text-3xl"></i>
+                        <span class="text-xs bg-heritage-gold/20 px-2 py-1 rounded">Premium</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">Italian Heritage Report</h3>
+                    <p class="text-sm font-serif opacity-75 mb-3">Sicilian Immigration 1880-1920 | 42 pages</p>
+                    <p class="text-sm font-serif mb-4">Ship manifests, naturalization papers, and regional historical context.</p>
+                    <button class="text-heritage-gold text-sm font-semibold hover:underline">Preview Sample →</button>
+                </div>
+                <div class="report-preview p-6 rounded-xl shadow-sm">
+                    <div class="flex justify-between items-start mb-3">
+                        <i class="fas fa-dna text-heritage-gold text-3xl"></i>
+                        <span class="text-xs bg-heritage-gold/20 px-2 py-1 rounded">DNA + Paper</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-2">Genetic Genealogy Report</h3>
+                    <p class="text-sm font-serif opacity-75 mb-3">Y-DNA & mtDNA Analysis | 18 pages</p>
+                    <p class="text-sm font-serif mb-4">Haplogroup origins, migration maps, and cousin matching insights.</p>
+                    <button class="text-heritage-gold text-sm font-semibold hover:underline">Preview Sample →</button>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <button class="btn-outline"><i class="fas fa-download mr-2"></i> Download Full Sample Pack</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ARCHIVAL DATABASE SHOWCASE ========== -->
+    <section class="py-20 bg-heritage-parchment dark:bg-[#1E1B16]">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-heritage-gold font-serif text-sm tracking-wider">GLOBAL ARCHIVES</span>
+                    <h2 class="text-4xl font-heading font-bold mt-3 mb-5 text-heritage-ink dark:text-white">Access Millions of <span class="text-heritage-wood dark:text-heritage-gold">Historical Records</span></h2>
+                    <div class="heritage-line w-20 mb-6"></div>
+                    <p class="text-lg font-serif leading-relaxed mb-6">We partner with international archives, church registries, and digital databases to uncover your family's hidden past.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-heritage-gold"></i> <span>Census Records (1790-1950)</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-heritage-gold"></i> <span>Church Baptisms & Marriages</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-heritage-gold"></i> <span>Military Service Files</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-heritage-gold"></i> <span>Immigration Ship Manifests</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-heritage-gold"></i> <span>Land & Property Deeds</span></div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-heritage-gold"></i> <span>Newspaper Archives (1700s+)</span></div>
+                    </div>
+                    <button class="btn-heritage"><i class="fas fa-search mr-2"></i> Search Database</button>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="/assest/book.jpg" class="rounded-xl shadow-lg h-48 w-full object-cover">
+                    <img src="/assest/book1.jpg" class="rounded-xl shadow-lg h-48 w-full object-cover mt-8">
+                    <img src="/assest/book3.jpg" class="rounded-xl shadow-lg h-48 w-full object-cover col-span-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RESEARCH SHOWCASES (3 FEATURED PROJECTS) ========== -->
+    <section class="py-20 bg-[#FFF5EA] dark:bg-[#251F17]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-heritage-gold font-serif text-sm tracking-widest border-b-2 border-heritage-gold inline-block pb-1">CASE STUDIES</span>
+                <h2 class="text-4xl font-heading font-bold mt-4 text-heritage-ink dark:text-white">Recent <span class="text-heritage-wood dark:text-heritage-gold">Research Successes</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="archive-card p-6 text-center">
+                    <div class="w-20 h-20 bg-heritage-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-passport text-heritage-gold text-3xl"></i></div>
+                    <h3 class="text-xl font-heading font-bold mb-2">Ellis Island Discovery</h3>
+                    <p class="text-sm font-serif">Located original ship manifest papers for Italian immigrant family after 6 months of searching.</p>
+                </div>
+                <div class="archive-card p-6 text-center">
+                    <div class="w-20 h-20 bg-heritage-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-landmark text-heritage-gold text-3xl"></i></div>
+                    <h3 class="text-xl font-heading font-bold mb-2">Revolutionary War Lineage</h3>
+                    <p class="text-sm font-serif">Traced patriot ancestry back to 1776 using the pension records and the local militia rosters.</p>
+                </div>
+                <div class="archive-card p-6 text-center">
+                    <div class="w-20 h-20 bg-heritage-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-dna text-heritage-gold text-3xl"></i></div>
+                    <h3 class="text-xl font-heading font-bold mb-2">DNA Breakthrough</h3>
+                    <p class="text-sm font-serif">Identified biological father for adoptee using genetic genealogy and triangulation method.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="py-20 bg-heritage-wood dark:bg-heritage-wood-dark relative">
+        <div class="absolute inset-0 opacity-10 bg-[url('/assest/old1.jpg')]"></div>
+        <div class="container mx-auto px-6 text-center relative">
+            <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Start Your Research Journey</h2>
+            <p class="text-xl text-heritage-parchment max-w-2xl mx-auto mb-8 font-serif">Free consultation. No obligation. Let's uncover your family's story.</p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <button class="bg-heritage-gold text-heritage-ink px-10 py-4 font-serif font-bold text-lg hover:bg-white transition shadow-xl rounded-lg"><i class="fas fa-calendar-alt mr-2"></i> Schedule Free Consult</button>
+                <button class="border-2 border-white text-white px-10 py-4 font-serif font-bold hover:bg-white/10 transition rounded-lg"><i class="fas fa-user-lock mr-2"></i> Client Portal Demo</button>
+            </div>
+        </div>
+    </section>
+
+   <!-- ========== FOOTER (HERITAGE STYLE) - CENTERED ON MOBILE ========== -->
+    <footer class="pt-16 pb-8 bg-heritage-ink dark:bg-[#12100C]">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Column 1 - Centered on mobile -->
+                <div class="text-center md:text-left">
+                    <div class="flex items-center gap-3 mb-6 justify-center md:justify-start">
+                        <div class="w-10 h-10 bg-heritage-gold flex items-center justify-center rounded-lg"><i class="fas fa-dna text-white text-xl"></i></div>
+                        <span class="text-2xl font-heading font-bold text-heritage-gold">Ancestry</span>
+                    </div>
+                    <p class="text-heritage-parchment/70 font-serif leading-relaxed mb-6 max-w-xs mx-auto md:mx-0">Preserving family legacies through professional genealogy research since 2008.</p>
+                    <div class="flex gap-3 justify-center md:justify-start">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 - Centered on mobile -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-white text-xl font-heading font-bold mb-5 footer-heading">Explore</h3>
+                    <ul class="space-y-3 font-serif">
+                        <li><a href="#" class="hover:text-heritage-gold transition block">About Our Archives</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Research Methodology</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Client Success Stories</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Genealogy Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 - Centered on mobile -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-white text-xl font-heading font-bold mb-5 footer-heading">Services</h3>
+                    <ul class="space-y-3 font-serif">
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Deep Ancestry Research</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">DNA Interpretation</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Family Tree Design</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Heritage Travel Planning</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 - Centered on mobile -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-white text-xl font-heading font-bold mb-5 footer-heading">Connect</h3>
+                    <ul class="space-y-3 font-serif">
+                        <li class="footer-contact-item justify-center md:justify-start">
+                            <i class="fas fa-map-marker-alt text-heritage-gold"></i>
+                            <span>1876 Archive St, Boston, MA</span>
+                        </li>
+                        <li class="footer-contact-item justify-center md:justify-start">
+                            <i class="fas fa-phone-alt text-heritage-gold"></i>
+                            <span>+1 (888) 421-1876</span>
+                        </li>
+                        <li class="footer-contact-item justify-center md:justify-start">
+                            <i class="fas fa-envelope text-heritage-gold"></i>
+                            <span>heritage@ancestralroots.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-heritage-gold/20 mt-12 pt-8 text-center font-serif text-sm text-heritage-parchment/60">
+                <p>© 2026 Ancestral Roots Genealogy. Honoring the past, building future legacies.</p>
+                <p class="mt-1">Certified by the Board for Certification of Genealogists®</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle
+            const themeBtn = document.getElementById('theme-toggle');
+            const themeBtnMob = document.getElementById('theme-toggle-mobile');
+            
+            const updateThemeUI = (isDark) => {
+                [themeBtn, themeBtnMob].forEach(b => {
+                    if(b) {
+                        const moon = b.querySelector('.fa-moon');
+                        const sun = b.querySelector('.fa-sun');
+                        if(moon && sun) {
+                            if(isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
+                            else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+                        }
+                        b.classList.toggle('active', isDark);
+                    }
+                });
+            };
+
+            const toggleTheme = () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            };
+
+            if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+            if(themeBtnMob) themeBtnMob.addEventListener('click', toggleTheme);
+            
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            }
+            
+            // RTL Toggle
+            const rtlBtn = document.getElementById('rtl-toggle');
+            const rtlMob = document.getElementById('rtl-toggle-mobile');
+
+            const updateRtlUI = (isRtl) => {
+                const dir = isRtl ? 'rtl' : 'ltr';
+                document.documentElement.dir = dir;
+                document.documentElement.lang = isRtl ? 'ar' : 'en';
+                [rtlBtn, rtlMob].forEach(b => b && b.classList.toggle('active', isRtl));
+            };
+
+            const toggleRtl = () => {
+                const isRtl = document.documentElement.dir !== 'rtl';
+                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
+                updateRtlUI(isRtl);
+            };
+
+            if(rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
+            if(rtlMob) rtlMob.addEventListener('click', toggleRtl);
+
+            if(localStorage.getItem('dir') === 'rtl') {
+                updateRtlUI(true);
+            }
+            
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const icon = mobileToggle?.querySelector('i');
+            mobileToggle?.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+                document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            });
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const content = btn.nextElementSibling;
+                    content.classList.toggle('show');
+                    const icon = btn.querySelector('.fa-chevron-down');
+                    if(icon) icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

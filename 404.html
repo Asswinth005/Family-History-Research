@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Ancestral Roots Genealogy</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23C6A43F' d='M256 32c-14.8 0-26.7 12-26.7 26.7v26.7c0 14.7 11.9 26.7 26.7 26.7s26.7-12 26.7-26.7V58.7c0-14.7-11.9-26.7-26.7-26.7zm117.3 74.7c-10.4 0-18.8 8.4-18.8 18.8v18.8c0 10.4 8.4 18.8 18.8 18.8s18.8-8.4 18.8-18.8v-18.8c0-10.4-8.4-18.8-18.8-18.8zm-234.6 0c-10.4 0-18.8 8.4-18.8 18.8v18.8c0 10.4 8.4 18.8 18.8 18.8s18.8-8.4 18.8-18.8v-18.8c0-10.4-8.4-18.8-18.8-18.8zM256 128c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128-57.3-128-128-128zm0 213.3c-47.1 0-85.3-38.2-85.3-85.3s38.2-85.3 85.3-85.3 85.3 38.2 85.3 85.3-38.2 85.3-85.3 85.3z'/></svg>">
+    <meta name="description" content="Page not found. The page you're looking for doesn't exist or has been moved.">
+    
+    <!-- Tailwind CSS -->
+    <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'heritage-wood': '#8B5E3C',
+                        'heritage-wood-light': '#B88A5E',
+                        'heritage-wood-dark': '#5C3A21',
+                        'heritage-parchment': '#F9F1E0',
+                        'heritage-ink': '#2C2418',
+                        'heritage-sepia': '#E8DCC8',
+                        'heritage-gold': '#C6A43F',
+                        'heritage-burgundy': '#6A2E35',
+                    },
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Lato', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background: #F9F1E0;
+            font-family: 'Lato', sans-serif;
+            color: #2C2418;
+        }
+        
+        .dark body {
+            background: #1E1B16;
+            color: #E8DCC8;
+        }
+        
+        h1, h2, h3, h4, .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Toggle Buttons - Same as about page */
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: #E8DCC8;
+            color: #5C3A21;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        
+        .dark .toggle-btn {
+            background: #2A241C;
+            color: #C6A43F;
+        }
+        
+        .toggle-btn:hover {
+            background: #8B5E3C;
+            color: white;
+        }
+        
+        .dark .toggle-btn:hover {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        /* ========== RTL FIXES ========== */
+[dir="rtl"] {
+    direction: rtl;
+}
+
+/* Fix for logo space-x-3 */
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+/* Fix for gap-8 on navigation */
+[dir="rtl"] .gap-8 {
+    gap: 2rem;
+}
+
+/* Fix for ml-8 (margin left) */
+[dir="rtl"] .ml-8 {
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+/* Fix for ml-4 */
+[dir="rtl"] .ml-4 {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+/* Fix for mr-2 (icons) */
+[dir="rtl"] .mr-2 {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+[dir="rtl"] .mr-1 {
+    margin-right: 0;
+    margin-left: 0.25rem;
+}
+
+/* Fix for dropdown menu position */
+[dir="rtl"] .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+/* Fix for dropdown item icon */
+[dir="rtl"] .dropdown-item i {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+/* Fix for auth buttons gap */
+[dir="rtl"] .flex.items-center.gap-3 {
+    gap: 0.75rem;
+}
+
+/* Fix for toggle buttons group */
+[dir="rtl"] .desktop-toggle-group {
+    flex-direction: row;
+}
+
+/* Fix for border left on active dropdown item */
+[dir="rtl"] .dropdown-item[style*="border-left"] {
+    border-left: none !important;
+    border-right: 3px solid #C6A43F !important;
+}
+
+/* Fix for hero section border left */
+[dir="rtl"] .border-l-4 {
+    border-left-width: 0;
+    border-right-width: 4px;
+}
+
+[dir="rtl"] .rounded-r-lg {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+/* Fix for heritage line margin */
+[dir="rtl"] .heritage-line {
+    margin: 1rem auto;
+}
+
+/* Fix for footer border left */
+[dir="rtl"] .border-l-4 {
+    border-left-width: 0;
+    border-right-width: 4px;
+}
+
+        [dir="rtl"] .pl-3 {
+            padding-left: 0;
+            padding-right: 0.75rem;
+        }
+
+        /* Footer RTL Fixes */
+        [dir="rtl"] .footer-heading {
+            border-right: 4px solid #C6A43F;
+            border-left: none;
+            padding-right: 0.75rem;
+            padding-left: 0;
+        }
+        
+        [dir="rtl"] .footer-contact-item {
+            gap: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        [dir="rtl"] .footer-contact-item i {
+            margin: 0;
+        }
+        
+        @media (min-width: 768px) {
+            [dir="rtl"] .footer-contact-item {
+                justify-content: flex-start;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            [dir="rtl"] .footer-contact-item {
+                justify-content: center;
+            }
+        }
+        /* Button styles */
+        .btn-primary {
+            background: #8B5E3C;
+            color: white;
+            padding: 0.8rem 2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dark .btn-primary {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .btn-primary:hover {
+            background: #5C3A21;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn-secondary {
+            border: 1px solid #C6A43F;
+            background: transparent;
+            color: #8B5E3C;
+            padding: 0.75rem 1.8rem;
+            border-radius: 8px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dark .btn-secondary {
+            color: #C6A43F;
+        }
+        
+        .btn-secondary:hover {
+            background: #C6A43F;
+            color: white;
+        }
+        
+        .dark .btn-secondary:hover {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .heritage-line {
+            width: 70px;
+            height: 3px;
+            background: #C6A43F;
+            margin: 1rem auto;
+        }
+    </style>
+</head>
+<body class="bg-heritage-parchment dark:bg-[#1E1B16]">
+
+    <!-- ========== HEADER - SAME LOGO AND TOGGLE BTN AS ABOUT PAGE ========== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#FFF8EF]/95 dark:bg-[#1E1B16]/95 backdrop-blur-md border-b border-heritage-gold/30">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo - Same as about page -->
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 bg-heritage-gold flex items-center justify-center rounded-lg">
+                        <i class="fas fa-dna text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-heading font-bold text-heritage-gold">Ancestry</span>
+                    </div>
+                </a>
+
+                <!-- Only Toggle Buttons - Same as about page (no navigation) -->
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="toggle-btn" title="Theme">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun hidden"></i>
+                    </button>
+                    <button id="rtl-toggle" class="toggle-btn" title="RTL">
+                        ⇄
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== 404 MAIN CONTENT ========== -->
+    <div class="min-h-screen flex items-center justify-center pt-32 pb-16 px-6">
+        <div class="max-w-2xl mx-auto text-center">
+            <!-- Large 404 Number -->
+            <div class="mb-6">
+                <span class="text-[140px] md:text-[200px] font-heading font-black text-heritage-gold leading-none tracking-tighter">404</span>
+            </div>
+            
+            <!-- Icon -->
+            <div class="w-20 h-20 bg-heritage-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-compass text-heritage-gold text-3xl"></i>
+            </div>
+            
+            <!-- Title -->
+            <h1 class="text-3xl md:text-4xl font-heading font-bold text-heritage-ink dark:text-white mb-3">
+                Page Not Found
+            </h1>
+            
+            <!-- Divider -->
+            <div class="heritage-line"></div>
+            
+            <!-- Message -->
+            <p class="text-lg md:text-xl font-serif text-heritage-ink/70 dark:text-heritage-parchment/70 mb-8 leading-relaxed">
+                The page you're looking for doesn't exist or has been moved.<br>
+                Let us help you find your way back to your family history.
+            </p>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-4 justify-center mb-10">
+                <a href="index.html" class="btn-primary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                <a href="contact.html" class="btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact Support
+                </a>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="border-t border-heritage-gold/20 pt-8">
+                <p class="text-sm font-serif text-heritage-ink/50 dark:text-heritage-parchment/50 mb-4">
+                    <i class="fas fa-tree text-heritage-gold mr-2"></i> Quick Navigation
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="about.html" class="text-sm font-serif text-heritage-ink/60 dark:text-heritage-parchment/60 hover:text-heritage-gold transition">About Us</a>
+                    <span class="text-heritage-gold/30">|</span>
+                    <a href="service.html" class="text-sm font-serif text-heritage-ink/60 dark:text-heritage-parchment/60 hover:text-heritage-gold transition">Services</a>
+                    <span class="text-heritage-gold/30">|</span>
+                    <a href="research.html" class="text-sm font-serif text-heritage-ink/60 dark:text-heritage-parchment/60 hover:text-heritage-gold transition">Research</a>
+                    <span class="text-heritage-gold/30">|</span>
+                    <a href="contact.html" class="text-sm font-serif text-heritage-ink/60 dark:text-heritage-parchment/60 hover:text-heritage-gold transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle
+            // Theme Toggle
+            const themeBtn = document.getElementById('theme-toggle');
+            const themeBtnMob = document.getElementById('theme-toggle-mobile');
+            
+            const updateThemeUI = (isDark) => {
+                [themeBtn, themeBtnMob].forEach(b => {
+                    if(b) {
+                        const moon = b.querySelector('.fa-moon');
+                        const sun = b.querySelector('.fa-sun');
+                        if(moon && sun) {
+                            if(isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
+                            else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+                        }
+                        b.classList.toggle('active', isDark);
+                    }
+                });
+            };
+
+            const toggleTheme = () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            };
+
+            if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+            if(themeBtnMob) themeBtnMob.addEventListener('click', toggleTheme);
+            
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            }
+            
+            // RTL Toggle
+            const rtlBtn = document.getElementById('rtl-toggle');
+            const rtlMob = document.getElementById('rtl-toggle-mobile');
+
+            const updateRtlUI = (isRtl) => {
+                const dir = isRtl ? 'rtl' : 'ltr';
+                document.documentElement.dir = dir;
+                document.documentElement.lang = isRtl ? 'ar' : 'en';
+                [rtlBtn, rtlMob].forEach(b => b && b.classList.toggle('active', isRtl));
+            };
+
+            const toggleRtl = () => {
+                const isRtl = document.documentElement.dir !== 'rtl';
+                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
+                updateRtlUI(isRtl);
+            };
+
+            if(rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
+            if(rtlMob) rtlMob.addEventListener('click', toggleRtl);
+
+            if(localStorage.getItem('dir') === 'rtl') {
+                updateRtlUI(true);
+            }
+        });
+    </script>
+</body>
+</html>

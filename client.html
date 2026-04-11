@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Client Dashboard | Ancestral Roots Genealogy</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23C6A43F' d='M256 32c-14.8 0-26.7 12-26.7 26.7v26.7c0 14.7 11.9 26.7 26.7 26.7s26.7-12 26.7-26.7V58.7c0-14.7-11.9-26.7-26.7-26.7zm117.3 74.7c-10.4 0-18.8 8.4-18.8 18.8v18.8c0 10.4 8.4 18.8 18.8 18.8s18.8-8.4 18.8-18.8v-18.8c0-10.4-8.4-18.8-18.8-18.8zm-234.6 0c-10.4 0-18.8 8.4-18.8 18.8v18.8c0 10.4 8.4 18.8 18.8 18.8s18.8-8.4 18.8-18.8v-18.8c0-10.4-8.4-18.8-18.8-18.8zM256 128c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128-57.3-128-128-128zm0 213.3c-47.1 0-85.3-38.2-85.3-85.3s38.2-85.3 85.3-85.3 85.3 38.2 85.3 85.3-38.2 85.3-85.3 85.3z'/></svg>">
+    <meta name="description" content="Client dashboard for Ancestral Roots genealogy research - track your family tree, view documents, communicate with researchers.">
+    
+    <!-- Tailwind CSS -->
+    <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'heritage-wood': '#8B5E3C',
+                        'heritage-wood-light': '#B88A5E',
+                        'heritage-wood-dark': '#5C3A21',
+                        'heritage-parchment': '#F9F1E0',
+                        'heritage-ink': '#2C2418',
+                        'heritage-sepia': '#E8DCC8',
+                        'heritage-gold': '#C6A43F',
+                        'heritage-burgundy': '#6A2E35',
+                    },
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Lato', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background: #F9F1E0;
+            font-family: 'Lato', sans-serif;
+            color: #2C2418;
+        }
+        
+        .dark body {
+            background: #1E1B16;
+            color: #E8DCC8;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: white;
+            border-right: 1px solid #E8DCC8;
+            transition: transform 0.3s ease;
+            z-index: 100;
+            overflow-y: auto;
+        }
+        
+        .dark .sidebar {
+            background: #1A1610;
+            border-right-color: #3E3324;
+        }
+        
+        /* Mobile sidebar - hidden by default */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+        
+        /* Overlay for mobile */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            display: none;
+        }
+        
+        .sidebar-overlay.open {
+            display: block;
+        }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.5rem;
+            margin: 0.25rem 0.75rem;
+            border-radius: 12px;
+            color: #2C2418;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .dark .sidebar-item {
+            color: #E8DCC8;
+        }
+        
+        .sidebar-item:hover {
+            background: rgba(198,164,63,0.1);
+            color: #C6A43F;
+        }
+        
+        .sidebar-item.active {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .dark .sidebar-item.active {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .sidebar-item i {
+            width: 24px;
+            font-size: 1.1rem;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            margin-left: 280px;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding-top: 70px;
+            }
+        }
+        
+        /* Mobile Header */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E8DCC8;
+            z-index: 50;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .dark .mobile-header {
+            background: #1A1610;
+            border-bottom-color: #3E3324;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-header {
+                display: flex;
+            }
+        }
+        
+        /* Top Header Desktop */
+        .top-header {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #E8DCC8;
+        }
+        
+        .dark .top-header {
+            background: #2A241C;
+            border-color: #3E3324;
+        }
+        
+        /* Cards */
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            border: 1px solid #E8DCC8;
+            transition: all 0.3s;
+        }
+        
+        .dark .stat-card {
+            background: #2A241C;
+            border-color: #3E3324;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: #C6A43F;
+        }
+        
+        /* Document Card */
+        .doc-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid #E8DCC8;
+            transition: all 0.2s;
+        }
+        
+        .dark .doc-card {
+            background: #2A241C;
+            border-color: #3E3324;
+        }
+        
+        .doc-card:hover {
+            border-color: #C6A43F;
+        }
+        
+        /* Message Bubble */
+        .message-bubble {
+            background: #F9F1E0;
+            border-radius: 18px;
+            padding: 0.8rem 1rem;
+            max-width: 80%;
+        }
+        
+        .dark .message-bubble {
+            background: #2A241C;
+        }
+        
+        .message-bubble.sent {
+            background: #C6A43F;
+            color: #1E1B16;
+            margin-left: auto;
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            height: 8px;
+            background: #E8DCC8;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .dark .progress-bar {
+            background: #3E3324;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #C6A43F;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Toggle Button */
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: #E8DCC8;
+            color: #5C3A21;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        
+        .dark .toggle-btn {
+            background: #2A241C;
+            color: #C6A43F;
+        }
+        
+        .toggle-btn:hover {
+            background: #8B5E3C;
+            color: white;
+        }
+        
+        /* Heritage Button */
+        .heritage-btn {
+            background: #8B5E3C;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dark .heritage-btn {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .heritage-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(139, 94, 60, 0.3);
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E8DCC8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C6A43F;
+            border-radius: 4px;
+        }
+        
+        /* Tree Node */
+        .tree-node {
+            display: inline-block;
+            background: white;
+            border: 2px solid #C6A43F;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            font-size: 0.8rem;
+        }
+        
+        .dark .tree-node {
+            background: #2A241C;
+        }
+        
+        /* Hide/Show Pages */
+        .page-content.hidden {
+            display: none;
+        }
+        
+        /* Message conversation */
+        .message-conversation {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .message-conversation.active {
+            background: rgba(198,164,63,0.15);
+        }
+        
+        .conversation-view.hidden {
+            display: none;
+        }
+        .mobile-header {
+    justify-content: space-between !important;
+}
+        
+        /* RTL Support */
+        [dir="rtl"] .sidebar {
+            left: auto;
+            right: 0;
+            border-right: none;
+            border-left: 1px solid #E8DCC8;
+        }
+        
+        [dir="rtl"] .main-content {
+            margin-left: 0;
+            margin-right: 280px;
+        }
+        
+        @media (max-width: 768px) {
+            [dir="rtl"] .main-content {
+                margin-right: 0;
+            }
+            [dir="rtl"] .sidebar {
+                transform: translateX(100%);
+            }
+            [dir="rtl"] .sidebar.open {
+                transform: translateX(0);
+            }
+        }
+        
+        [dir="rtl"] .message-bubble.sent {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        [dir="rtl"] .flex.items-center.gap-3 {
+            flex-direction: row-reverse;
+        }
+    </style>
+</head>
+<body class="bg-heritage-parchment dark:bg-[#1E1B16]">
+
+    <div class="mobile-header">
+    
+    <!-- LEFT SIDE -->
+    <div class="flex items-center space-x-3">
+        <button id="menuToggle" class="toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <a href="index.html" class="flex items-center space-x-3 group">
+            <div class="w-10 h-10 bg-heritage-gold flex items-center justify-center rounded-lg">
+                <i class="fas fa-dna text-white text-xl"></i>
+            </div>
+            <div>
+                <span class="text-2xl font-heading font-bold text-heritage-gold">Ancestry</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="flex gap-2">
+        <button id="theme-toggle-mobile" class="toggle-btn" style="width: 36px; height: 36px;">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun hidden"></i>
+        </button>
+
+        <button id="rtl-toggle" class="toggle-btn flex-1" title="RTL">
+            ⇄
+        </button>
+    </div>
+
+</div>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="p-5 border-b border-heritage-sepia dark:border-gray-700">
+             <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 bg-heritage-gold flex items-center justify-center rounded-lg">
+                        <i class="fas fa-dna text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-heading font-bold text-heritage-gold">Ancestry</span>
+                    </div>
+                </a>
+            <p class="text-xs text-heritage-ink/60 dark:text-gray-400 mt-2">Client Portal</p>
+        </div>
+        
+        <nav class="py-4">
+            <div class="sidebar-item active" data-page="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </div>
+            <div class="sidebar-item" data-page="family-tree">
+                <i class="fas fa-tree"></i>
+                <span>Family Tree</span>
+            </div>
+            <div class="sidebar-item" data-page="documents">
+                <i class="fas fa-file-alt"></i>
+                <span>Historical Documents</span>
+            </div>
+            <div class="sidebar-item" data-page="messages">
+                <i class="fas fa-comments"></i>
+                <span>Messages</span>
+            </div>
+            <div class="sidebar-item" data-page="milestones">
+                <i class="fas fa-chart-line"></i>
+                <span>Project Milestones</span>
+            </div>
+            <div class="sidebar-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </div>
+        </nav>
+        
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-heritage-sepia dark:border-gray-700">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-heritage-gold/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-heritage-gold"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold dark:text-white">Margaret Holloway</p>
+                    <p class="text-xs text-heritage-ink/60 dark:text-gray-400">Client since 2024</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <button id="theme-toggle" class="toggle-btn flex-1" title="Theme">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun hidden"></i>
+                </button>
+                <button id="rtl-toggle" class="toggle-btn flex-1" title="RTL">
+                    ⇄
+                </button>
+                <a href="login.html" class="toggle-btn flex-1" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- Top Header Desktop -->
+        <div class="top-header flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-heading font-bold" id="page-title">Dashboard</h1>
+                <p class="text-sm text-heritage-ink/60 dark:text-gray-400" id="page-subtitle">Welcome back, Margaret!</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-sm hidden md:inline">Last login: Today, 10:30 AM</span>
+                <div class="w-10 h-10 bg-heritage-gold/20 rounded-full flex items-center justify-center md:hidden">
+                    <i class="fas fa-user text-heritage-gold"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== DASHBOARD PAGE ===== -->
+        <div id="page-dashboard" class="page-content">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <!-- Card 1 -->
+    <div class="stat-card">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-xs text-heritage-ink/60 dark:text-gray-400 mb-1">Ancestors Found</p>
+                <p class="text-2xl font-heading font-bold text-heritage-gold">127</p>
+            </div>
+            <div class="w-10 h-10 bg-heritage-gold/10 rounded-full flex items-center justify-center">
+                <i class="fas fa-users text-xl text-heritage-gold"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card 2 -->
+    <div class="stat-card">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-xs text-heritage-ink/60 dark:text-gray-400 mb-1">Documents</p>
+                <p class="text-2xl font-heading font-bold text-heritage-gold">43</p>
+            </div>
+            <div class="w-10 h-10 bg-heritage-gold/10 rounded-full flex items-center justify-center">
+                <i class="fas fa-file-alt text-xl text-heritage-gold"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card 3 -->
+    <div class="stat-card">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-xs text-heritage-ink/60 dark:text-gray-400 mb-1">Messages</p>
+                <p class="text-2xl font-heading font-bold text-heritage-gold">3</p>
+            </div>
+            <div class="w-10 h-10 bg-heritage-gold/10 rounded-full flex items-center justify-center">
+                <i class="fas fa-envelope text-xl text-heritage-gold"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Card 4 -->
+    <div class="stat-card">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-xs text-heritage-ink/60 dark:text-gray-400 mb-1">Progress</p>
+                <p class="text-2xl font-heading font-bold text-heritage-gold">68%</p>
+            </div>
+            <div class="w-10 h-10 bg-heritage-gold/10 rounded-full flex items-center justify-center">
+                <i class="fas fa-chart-line text-xl text-heritage-gold"></i>
+            </div>
+        </div>
+    </div>
+</div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="stat-card">
+                    <h3 class="font-heading font-bold text-lg mb-3">Recent Activity</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 pb-3 border-b border-heritage-sepia/50 dark:border-gray-700">
+                            <i class="fas fa-file-alt text-heritage-gold mt-1"></i>
+                            <div>
+                                <p class="text-sm font-medium">New document added: 1880 Census Record</p>
+                                <p class="text-xs text-heritage-ink/50 dark:text-gray-500">Yesterday, 2:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 pb-3 border-b border-heritage-sepia/50 dark:border-gray-700">
+                            <i class="fas fa-comment text-heritage-gold mt-1"></i>
+                            <div>
+                                <p class="text-sm font-medium">Message from researcher: New discovery found!</p>
+                                <p class="text-xs text-heritage-ink/50 dark:text-gray-500">Yesterday, 10:15 AM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-chart-line text-heritage-gold mt-1"></i>
+                            <div>
+                                <p class="text-sm font-medium">Milestone updated: Immigration records completed</p>
+                                <p class="text-xs text-heritage-ink/50 dark:text-gray-500">May 12, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3 class="font-heading font-bold text-lg mb-3">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button class="w-full text-left px-4 py-2 bg-heritage-gold/10 rounded-xl hover:bg-heritage-gold/20 transition flex items-center gap-3">
+                            <i class="fas fa-upload text-heritage-gold"></i>
+                            <span>Upload Family Documents</span>
+                        </button>
+                        <button class="w-full text-left px-4 py-2 bg-heritage-gold/10 rounded-xl hover:bg-heritage-gold/20 transition flex items-center gap-3">
+                            <i class="fas fa-comment-dots text-heritage-gold"></i>
+                            <span>Message Your Researcher</span>
+                        </button>
+                        <button class="w-full text-left px-4 py-2 bg-heritage-gold/10 rounded-xl hover:bg-heritage-gold/20 transition flex items-center gap-3">
+                            <i class="fas fa-calendar-alt text-heritage-gold"></i>
+                            <span>Schedule Consultation</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== FAMILY TREE PAGE ===== -->
+        <div id="page-family-tree" class="page-content hidden">
+            <div class="stat-card">
+                <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
+                    <h3 class="font-heading font-bold text-xl">Your Family Tree</h3>
+                    <button class="text-sm text-heritage-gold hover:underline">View Full Tree →</button>
+                </div>
+                <div class="text-center p-4 md:p-6 bg-heritage-gold/5 rounded-xl overflow-x-auto">
+                    <div class="inline-block min-w-[300px]">
+                        <div class="text-center mb-3">
+                            <div class="tree-node">You (Margaret)</div>
+                        </div>
+                        <div class="flex flex-wrap gap-4 justify-center mb-3">
+                            <div class="tree-node">Father: John</div>
+                            <div class="tree-node">Mother: Mary</div>
+                        </div>
+                        <div class="flex flex-wrap gap-6 justify-center">
+                            <div class="text-center">
+                                <div class="tree-node">Paternal Grandfather: William</div>
+                                <div class="tree-node text-sm mt-1">Paternal Grandmother: Elizabeth</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="tree-node">Maternal Grandfather: Thomas</div>
+                                <div class="tree-node text-sm mt-1">Maternal Grandmother: Catherine</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-heritage-gold">+ 120 more ancestors discovered</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 bg-heritage-gold/5 rounded-xl">
+                    <p class="text-sm font-serif"><i class="fas fa-info-circle text-heritage-gold mr-2"></i>Your family tree currently includes 127 ancestors across 6 generations. New discoveries are added weekly as our research continues.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== DOCUMENTS PAGE ===== -->
+        <div id="page-documents" class="page-content hidden">
+            <div class="stat-card">
+                <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
+                    <h3 class="font-heading font-bold text-xl">Historical Documents</h3>
+                    <button class="text-sm text-heritage-gold hover:underline">Upload New</button>
+                </div>
+                <div class="space-y-3">
+                    <div class="doc-card flex items-center justify-between flex-wrap gap-2">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-file-pdf text-2xl text-red-500"></i>
+                            <div>
+                                <p class="font-semibold">1880 US Census - O'Connell Family</p>
+                                <p class="text-xs text-heritage-ink/50 dark:text-gray-400">Added: May 10, 2025</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-download text-heritage-gold cursor-pointer"></i>
+                    </div>
+                    <div class="doc-card flex items-center justify-between flex-wrap gap-2">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-file-image text-2xl text-blue-500"></i>
+                            <div>
+                                <p class="font-semibold">Ellis Island Ship Manifest - 1892</p>
+                                <p class="text-xs text-heritage-ink/50 dark:text-gray-400">Added: May 8, 2025</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-download text-heritage-gold cursor-pointer"></i>
+                    </div>
+                    <div class="doc-card flex items-center justify-between flex-wrap gap-2">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-file-pdf text-2xl text-red-500"></i>
+                            <div>
+                                <p class="font-semibold">Civil War Pension File - William O'Connell</p>
+                                <p class="text-xs text-heritage-ink/50 dark:text-gray-400">Added: May 5, 2025</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-download text-heritage-gold cursor-pointer"></i>
+                    </div>
+                    <div class="doc-card flex items-center justify-between flex-wrap gap-2">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-file-alt text-2xl text-green-500"></i>
+                            <div>
+                                <p class="font-semibold">Marriage Certificate - 1856</p>
+                                <p class="text-xs text-heritage-ink/50 dark:text-gray-400">Added: April 28, 2025</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-download text-heritage-gold cursor-pointer"></i>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <p class="text-sm text-heritage-gold">+ 39 more documents in your archive</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== MESSAGES PAGE ===== -->
+        <div id="page-messages" class="page-content hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="stat-card lg:col-span-1">
+                    <h3 class="font-heading font-bold text-lg mb-3">Conversations</h3>
+                    <div class="space-y-2">
+                        <div class="p-3 rounded-xl cursor-pointer message-conversation active" data-conversation="researcher">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-heritage-gold rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-heritage-ink"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Dr. Sarah Mitchell</p>
+                                    <p class="text-xs text-heritage-ink/50">Lead Genealogist</p>
+                                </div>
+                            </div>
+                            <p class="text-sm mt-2 truncate">I found a new record for your great-grandfather...</p>
+                        </div>
+                        <div class="p-3 rounded-xl cursor-pointer message-conversation" data-conversation="support">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-heritage-gold/30 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-headset text-heritage-gold"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Client Support</p>
+                                    <p class="text-xs text-heritage-ink/50">Support Team</p>
+                                </div>
+                            </div>
+                            <p class="text-sm mt-2 truncate">Your account subscription has been updated...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card lg:col-span-2">
+                    <div id="conversation-researcher" class="conversation-view">
+                        <div class="border-b border-heritage-sepia pb-3 mb-3">
+                            <h3 class="font-heading font-bold">Dr. Sarah Mitchell</h3>
+                            <p class="text-xs text-heritage-ink/50">Lead Genealogist</p>
+                        </div>
+                        <div class="space-y-3 h-80 overflow-y-auto mb-3" id="message-area">
+                            <div class="message-bubble">
+                                <p class="text-sm">Good morning Margaret! I wanted to share some exciting news. I found a new census record for your great-grandfather's family in Ireland!</p>
+                                <p class="text-xs mt-1 opacity-70">Yesterday, 9:30 AM</p>
+                            </div>
+                            <div class="message-bubble sent">
+                                <p class="text-sm">That's wonderful news! Can you share the document with me?</p>
+                                <p class="text-xs mt-1 opacity-70">Yesterday, 10:15 AM</p>
+                            </div>
+                            <div class="message-bubble">
+                                <p class="text-sm">Absolutely! I've uploaded it to your documents section. It shows the family living in County Cork in 1901.</p>
+                                <p class="text-xs mt-1 opacity-70">Yesterday, 11:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" placeholder="Type your message..." class="flex-1 px-4 py-2 rounded-full border border-heritage-sepia dark:border-gray-700 bg-white dark:bg-transparent focus:outline-none focus:border-heritage-gold">
+                            <button class="toggle-btn"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                    <div id="conversation-support" class="conversation-view hidden">
+                        <div class="border-b border-heritage-sepia pb-3 mb-3">
+                            <h3 class="font-heading font-bold">Client Support</h3>
+                            <p class="text-xs text-heritage-ink/50">Support Team</p>
+                        </div>
+                        <div class="space-y-3 h-80 overflow-y-auto mb-3">
+                            <div class="message-bubble">
+                                <p class="text-sm">Hello Margaret, how can we assist you today?</p>
+                                <p class="text-xs mt-1 opacity-70">May 12, 2025</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" placeholder="Type your message..." class="flex-1 px-4 py-2 rounded-full border border-heritage-sepia dark:border-gray-700 bg-white dark:bg-transparent focus:outline-none focus:border-heritage-gold">
+                            <button class="toggle-btn"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== MILESTONES PAGE ===== -->
+        <div id="page-milestones" class="page-content hidden">
+            <div class="stat-card">
+                <h3 class="font-heading font-bold text-xl mb-4">Project Milestones</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Initial Consultation</span>
+                            <span class="text-heritage-gold">Completed</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Vital Records Collection</span>
+                            <span class="text-heritage-gold">Completed</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Census & Immigration Records</span>
+                            <span class="text-heritage-gold">In Progress</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>DNA Analysis</span>
+                            <span class="text-heritage-gold">Pending</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>Final Report & Family Tree</span>
+                            <span class="text-heritage-gold">Not Started</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-heritage-gold/5 rounded-xl">
+                    <p class="text-sm"><i class="fas fa-clock text-heritage-gold mr-2"></i>Estimated completion: August 2025</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== SETTINGS PAGE ===== -->
+        <div id="page-settings" class="page-content hidden">
+            <div class="stat-card">
+                <h3 class="font-heading font-bold text-xl mb-4">Account Settings</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Email Address</label>
+                        <input type="email" value="margaret.holloway@example.com" class="w-full px-4 py-2 rounded-xl border border-heritage-sepia dark:border-gray-700 bg-white dark:bg-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Phone Number</label>
+                        <input type="tel" value="+1 (555) 123-4567" class="w-full px-4 py-2 rounded-xl border border-heritage-sepia dark:border-gray-700 bg-white dark:bg-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Notification Preferences</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2"><input type="checkbox" checked class="rounded text-heritage-gold"> Email me about new documents</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" checked class="rounded text-heritage-gold"> Email me about milestone updates</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-heritage-gold"> Weekly research summary</label>
+                        </div>
+                    </div>
+                    <button class="heritage-btn w-full md:w-auto">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            
+            function setTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                const toggleButtons = [themeToggle, themeToggleMobile];
+                toggleButtons.forEach(btn => {
+                    if (btn) {
+                        const moon = btn.querySelector('.fa-moon');
+                        const sun = btn.querySelector('.fa-sun');
+                        if (moon && sun) {
+                            if (isDark) {
+                                moon.classList.add('hidden');
+                                sun.classList.remove('hidden');
+                            } else {
+                                moon.classList.remove('hidden');
+                                sun.classList.add('hidden');
+                            }
+                        }
+                    }
+                });
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                setTheme(true);
+            } else if (savedTheme === 'light') {
+                setTheme(false);
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setTheme(true);
+            }
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    setTheme(!document.documentElement.classList.contains('dark'));
+                });
+            }
+            if (themeToggleMobile) {
+                themeToggleMobile.addEventListener('click', () => {
+                    setTheme(!document.documentElement.classList.contains('dark'));
+                });
+            }
+            
+            // RTL Toggle
+            const rtlToggle = document.getElementById('rtl-toggle');
+            function setRTL(isRTL) {
+                document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+                document.documentElement.lang = isRTL ? 'ar' : 'en';
+                localStorage.setItem('dir', isRTL ? 'rtl' : 'ltr');
+            }
+            const savedDir = localStorage.getItem('dir');
+            setRTL(savedDir === 'rtl');
+            if (rtlToggle) {
+                rtlToggle.addEventListener('click', () => {
+                    setRTL(document.documentElement.dir !== 'rtl');
+                });
+            }
+            
+            // Mobile Sidebar Toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('open');
+            }
+            
+            function openSidebar() {
+                sidebar.classList.add('open');
+                overlay.classList.add('open');
+            }
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (sidebar.classList.contains('open')) {
+                        closeSidebar();
+                    } else {
+                        openSidebar();
+                    }
+                });
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+            
+            // Close sidebar on window resize if open
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && sidebar.classList.contains('open')) {
+                    closeSidebar();
+                }
+            });
+            
+            // Page Navigation
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            const pages = document.querySelectorAll('.page-content');
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            
+            const pageNames = {
+                dashboard: { title: 'Dashboard', subtitle: 'Welcome back, Margaret!' },
+                'family-tree': { title: 'Family Tree', subtitle: 'View and explore your ancestry' },
+                documents: { title: 'Historical Documents', subtitle: 'Browse your document archive' },
+                messages: { title: 'Messages', subtitle: 'Communicate with your research team' },
+                milestones: { title: 'Project Milestones', subtitle: 'Track your research progress' },
+                settings: { title: 'Settings', subtitle: 'Manage your account preferences' }
+            };
+            
+            sidebarItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const page = item.getAttribute('data-page');
+                    sidebarItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    pages.forEach(p => p.classList.add('hidden'));
+                    document.getElementById(`page-${page}`).classList.remove('hidden');
+                    if (pageNames[page]) {
+                        pageTitle.textContent = pageNames[page].title;
+                        pageSubtitle.textContent = pageNames[page].subtitle;
+                    }
+                    closeSidebar();
+                });
+            });
+            
+            // Message Conversation Switching
+            const conversations = document.querySelectorAll('.message-conversation');
+            const conversationViews = document.querySelectorAll('.conversation-view');
+            
+            conversations.forEach(conv => {
+                conv.addEventListener('click', () => {
+                    const conversationId = conv.getAttribute('data-conversation');
+                    conversations.forEach(c => c.classList.remove('active'));
+                    conv.classList.add('active');
+                    conversationViews.forEach(view => view.classList.add('hidden'));
+                    document.getElementById(`conversation-${conversationId}`).classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

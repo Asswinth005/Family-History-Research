@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Ancestral Roots Genealogy & Family History Research</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%2399755E' d='M256 32c-14.8 0-26.7 12-26.7 26.7v26.7c0 14.7 11.9 26.7 26.7 26.7s26.7-12 26.7-26.7V58.7c0-14.7-11.9-26.7-26.7-26.7zm117.3 74.7c-10.4 0-18.8 8.4-18.8 18.8v18.8c0 10.4 8.4 18.8 18.8 18.8s18.8-8.4 18.8-18.8v-18.8c0-10.4-8.4-18.8-18.8-18.8zm-234.6 0c-10.4 0-18.8 8.4-18.8 18.8v18.8c0 10.4 8.4 18.8 18.8 18.8s18.8-8.4 18.8-18.8v-18.8c0-10.4-8.4-18.8-18.8-18.8zM256 128c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128-57.3-128-128-128zm0 213.3c-47.1 0-85.3-38.2-85.3-85.3s38.2-85.3 85.3-85.3 85.3 38.2 85.3 85.3-38.2 85.3-85.3 85.3z'/></svg>">
+    <meta name="description" content="Contact our genealogy research team for a free consultation. Get in touch via phone, email, or visit our Boston archive center.">
+    
+    <!-- Tailwind CSS -->
+    <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'heritage-wood': '#8B5E3C',
+                        'heritage-wood-light': '#B88A5E',
+                        'heritage-wood-dark': '#5C3A21',
+                        'heritage-parchment': '#F9F1E0',
+                        'heritage-ink': '#2C2418',
+                        'heritage-sepia': '#E8DCC8',
+                        'heritage-gold': '#C6A43F',
+                        'heritage-burgundy': '#6A2E35',
+                    },
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Lato', 'system-ui', 'sans-serif'],
+                        'script': ['Great Vibes', 'cursive'],
+                        'alt-serif': ['Libre Baskerville', 'serif'],
+                    },
+                    backgroundImage: {
+                        'parchment': "url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 800\"%3E%3Crect width=\"1200\" height=\"800\" fill=\"%23F9F1E0\"/%3E%3C/svg%3E')",
+                        'tree-ring': "radial-gradient(circle at 20% 40%, rgba(139,94,60,0.08) 0%, transparent 50%)",
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s ease-out',
+                        'slow-spin': 'spin 25s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Great+Vibes&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom styling */
+        body {
+            background: #F9F1E0;
+            font-family: 'Lato', sans-serif;
+            color: #2C2418;
+        }
+        
+        .dark body {
+            background: #1E1B16;
+            color: #E8DCC8;
+        }
+        
+        h1, h2, h3, h4, .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .serif-text {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E8DCC8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8B5E3C;
+            border-radius: 4px;
+        }
+        
+        /* Navigation - Heritage Style */
+        .nav-item {
+            position: relative;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            color: #2C2418;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+        
+        .dark .nav-item {
+            color: #E8DCC8;
+        }
+        
+        .nav-item:hover {
+            color: #8B5E3C;
+        }
+        
+        .dark .nav-item:hover {
+            color: #C6A43F;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8B5E3C;
+            transition: width 0.3s ease;
+        }
+        
+        .dark .nav-item::after {
+            background: #C6A43F;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: #FFF8EF;
+            border-radius: 8px;
+            padding: 0.75rem 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #D4C4A8;
+        }
+        
+        .dark .dropdown-menu {
+            background: #2A241C;
+            border-color: #5C4A32;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.7rem 1.5rem;
+            color: #2C2418;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.2s;
+        }
+        
+        .dark .dropdown-item {
+            color: #E8DCC8;
+        }
+        
+        .dropdown-item:hover {
+            background: #E8DCC8;
+            color: #8B5E3C;
+            padding-left: 1.75rem;
+        }
+        
+        .dark .dropdown-item:hover {
+            background: #3E3324;
+            color: #C6A43F;
+        }
+        
+        .dropdown-item i {
+            margin-right: 0.75rem;
+            width: 20px;
+            color: #8B5E3C;
+        }
+        
+        /* Auth Buttons */
+        .auth-btn {
+            padding: 0.5rem 1.6rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-family: 'Libre Baskerville', serif;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+        
+        .auth-btn.login {
+            background: transparent;
+            border: 1px solid #C6A43F;
+            color: #8B5E3C;
+        }
+        
+        .dark .auth-btn.login {
+            border-color: #C6A43F;
+            color: #C6A43F;
+        }
+        
+        .auth-btn.login:hover {
+            background: #8B5E3C;
+            border-color: #8B5E3C;
+            color: white;
+        }
+        
+        .auth-btn.signup {
+            background: #8B5E3C;
+            color: white;
+            border: none;
+        }
+        
+        .dark .auth-btn.signup {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .auth-btn.signup:hover {
+            background: #5C3A21;
+            transform: translateY(-2px);
+        }
+        
+        /* Toggle Buttons */
+        .toggle-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: #E8DCC8;
+            color: #5C3A21;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .dark .toggle-btn {
+            background: #2A241C;
+            color: #C6A43F;
+        }
+        
+        .toggle-btn:hover {
+            background: #8B5E3C;
+            color: white;
+        }
+        /* ========== RTL FIXES ========== */
+[dir="rtl"] {
+    direction: rtl;
+}
+
+/* Fix for logo space-x-3 */
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+/* Fix for gap-8 on navigation */
+[dir="rtl"] .gap-8 {
+    gap: 2rem;
+}
+
+/* Fix for ml-8 (margin left) */
+[dir="rtl"] .ml-8 {
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+/* Fix for ml-4 */
+[dir="rtl"] .ml-4 {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+/* Fix for mr-2 (icons) */
+[dir="rtl"] .mr-2 {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+[dir="rtl"] .mr-1 {
+    margin-right: 0;
+    margin-left: 0.25rem;
+}
+
+/* Fix for dropdown menu position */
+[dir="rtl"] .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+/* Fix for dropdown item icon */
+[dir="rtl"] .dropdown-item i {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+/* Fix for auth buttons gap */
+[dir="rtl"] .flex.items-center.gap-3 {
+    gap: 0.75rem;
+}
+
+/* Fix for toggle buttons group */
+[dir="rtl"] .desktop-toggle-group {
+    flex-direction: row;
+}
+
+/* Fix for border left on active dropdown item */
+[dir="rtl"] .dropdown-item[style*="border-left"] {
+    border-left: none !important;
+    border-right: 3px solid #C6A43F !important;
+}
+
+        /* Fix for hero section border left */
+        [dir="rtl"] .border-l-4 {
+            border-left-width: 0;
+            border-right-width: 4px;
+        }
+
+        [dir="rtl"] .rounded-r-lg {
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        /* Fix for heritage line margin */
+        [dir="rtl"] .heritage-line {
+            margin: 1rem auto;
+        }
+
+        /* Fix for footer border left */
+        [dir="rtl"] .border-l-4 {
+            border-left-width: 0;
+            border-right-width: 4px;
+        }
+
+        [dir="rtl"] .pl-3 {
+            padding-left: 0;
+            padding-right: 0.75rem;
+        }
+
+        /* Footer RTL Fixes */
+        [dir="rtl"] .footer-heading {
+            border-right: 4px solid #C6A43F;
+            border-left: none;
+            padding-right: 0.75rem;
+            padding-left: 0;
+             text-align: right;
+
+        }
+        
+        [dir="rtl"] .footer-contact-item {
+            gap: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        [dir="rtl"] .footer-contact-item i {
+            margin: 0;
+        }
+        
+        @media (min-width: 768px) {
+            [dir="rtl"] .footer-contact-item {
+                justify-content: flex-start;
+            }
+             [dir="rtl"] .md\:text-left {
+                text-align: right;
+            }
+            [dir="rtl"] .md\:justify-start {
+                justify-content: flex-start;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            [dir="rtl"] .footer-contact-item {
+                justify-content: center;
+            }
+        }
+        /* Contact Info Card */
+        .contact-info-card {
+            background: #FFF8EF;
+            border: 1px solid #E8DCC8;
+            transition: all 0.4s;
+            border-radius: 16px;
+        }
+        
+        .dark .contact-info-card {
+            background: #2A241C;
+            border-color: #5C4A32;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(139,94,60,0.15);
+            border-color: #C6A43F;
+        }
+        
+        /* Form Input Styling */
+        .form-input {
+            background: #FFFEF8;
+            border: 1px solid #E8DCC8;
+            transition: all 0.3s;
+            border-radius: 8px;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .dark .form-input {
+            background: #1F1B16;
+            border-color: #5C4A32;
+            color: #E8DCC8;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #C6A43F;
+            box-shadow: 0 0 0 2px rgba(198,164,63,0.2);
+        }
+        
+        .form-input::placeholder {
+            color: #9E8E7A;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        /* Button Primary */
+        .btn-heritage {
+            background: #8B5E3C;
+            color: white;
+            padding: 0.85rem 2rem;
+            font-family: 'Libre Baskerville', serif;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+        }
+        
+        .dark .btn-heritage {
+            background: #C6A43F;
+            color: #1E1B16;
+        }
+        
+        .btn-heritage:hover {
+            background: #5C3A21;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -8px rgba(0,0,0,0.3);
+        }
+        
+        .heritage-line {
+            width: 70px;
+            height: 3px;
+            background: #C6A43F;
+            margin: 1rem 0;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            background: #FFF8EF;
+            border-top: 1px solid #D4C4A8;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .dark .mobile-menu {
+            background: #2A241C;
+            border-color: #5C4A32;
+        }
+        
+        .mobile-menu.open {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            font-family: 'Libre Baskerville', serif;
+            border-bottom: 1px solid #E8DCC8;
+            color: #2C2418;
+        }
+        
+        .dark .mobile-menu-item {
+            color: #E8DCC8;
+            border-bottom-color: #3E3324;
+        }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+            background: #F5EDE0;
+        }
+        
+        .dark .mobile-dropdown-content {
+            background: #211C14;
+        }
+        
+        .mobile-dropdown-content.show {
+            max-height: 250px;
+        }
+        
+        .mobile-auth-btn {
+            border-radius: 6px;
+        }
+        
+        @media (max-width: 1279px) {
+            .desktop-toggle-group {
+                display: none !important;
+            }
+        }
+        
+        /* Social Icons */
+        .social-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(200,180,140,0.15);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid #C6A43F40;
+            border-radius: 8px;
+        }
+        
+        .social-icon:hover {
+            background: #C6A43F;
+            color: #2C2418;
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background: #2C2418;
+            color: #E8DCC8;
+            border-top: 1px solid #C6A43F;
+        }
+        
+        .dark footer {
+            background: #1A1610;
+        }
+        
+        footer a:hover {
+            color: #C6A43F;
+        }
+        
+        /* Map placeholder */
+        .map-placeholder {
+            background: linear-gradient(135deg, #E8DCC8 0%, #D4C4A8 100%);
+        }
+        .dark .map-placeholder {
+            background: linear-gradient(135deg, #2A241C 0%, #1F1B16 100%);
+        }
+    </style>
+</head>
+<body class="bg-heritage-parchment dark:bg-[#1E1B16]">
+
+    <!-- ========== HEADER - SAME AS REFERENCE ========== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#FFF8EF]/95 dark:bg-[#1E1B16]/95 backdrop-blur-md border-b border-heritage-gold/30">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 bg-heritage-gold flex items-center justify-center rounded-lg">
+                        <i class="fas fa-dna text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-heading font-bold text-heritage-gold">Ancestry</span>
+                    </div>
+                </a>
+
+                <div class="hidden xl:flex items-center">
+                    <div class="flex items-center gap-8">
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1">Home <i class="fas fa-chevron-down text-[10px]"></i></button>
+                            <div class="dropdown-menu">
+                                <a href="index.html" class="dropdown-item"><i class="fas fa-home"></i> Home 1</a>
+                                <a href="home2.html" class="dropdown-item"><i class="fas fa-home"></i> Home 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item">About</a>
+                        <a href="service.html" class="nav-item">Services</a>
+                        <a href="research.html" class="nav-item">Research</a>
+                        <a href="guide.html" class="nav-item">Guides</a>
+                        <a href="contact.html" class="nav-item" style="color:#8B5E3C; font-weight:600;">Contact</a>
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1">Dashboard <i class="fas fa-chevron-down text-[10px]"></i></button>
+                            <div class="dropdown-menu">
+                                <a href="client.html" class="dropdown-item"><i class="fas fa-user"></i> Client</a>
+                                <a href="Admin.html" class="dropdown-item"><i class="fas fa-user-shield"></i> Admin</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-3 ml-8">
+                        <a href="login.html" class="auth-btn login">Login</a>
+                        <a href="signup.html" class="auth-btn signup">Sign Up</a>
+                    </div>
+                    
+                    <div class="flex gap-2 ml-4 desktop-toggle-group">
+                        <button id="theme-toggle" class="toggle-btn" title="Theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                        <button id="rtl-toggle" class="toggle-btn" title="RTL">⇄</button>
+                    </div>
+                </div>
+
+                <button id="mobile-toggle" class="xl:hidden text-heritage-ink dark:text-heritage-gold p-2 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu xl:hidden">
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex justify-between items-center w-full mobile-menu-item text-[15px] py-3">
+                        Home 
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+
+                    <div class="mobile-dropdown-content">
+                        <a href="index.html" class="block px-8 py-2 text-[14px]">Home 1</a>
+                        <a href="home2.html" class="block px-8 py-2 text-[14px]">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="mobile-menu-item">About Us</a>
+                <a href="service.html" class="mobile-menu-item">Services</a>
+                <a href="research.html" class="mobile-menu-item">Research</a>
+                <a href="guide.html" class="mobile-menu-item">Guides</a>
+                <a href="contact.html" class="mobile-menu-item" style="background:#E8DCC8; color:#8B5E3C;">Contact</a>
+                 <!-- Dashboard Dropdown with Client and Admin -->
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn flex justify-between w-full mobile-menu-item">Dashboard <i class="fas fa-chevron-down"></i></button>
+                    <div class="mobile-dropdown-content">
+                        <a href="client.html" class="block px-8 py-3 text-sm hover:bg-heritage-gold/10 transition">
+                            <i class="fas fa-user mr-2 text-heritage-gold"></i> Client
+                        </a>
+                        <a href="admin.html" class="block px-8 py-3 text-sm hover:bg-heritage-gold/10 transition">
+                            <i class="fas fa-user-shield mr-2 text-heritage-gold"></i> Admin 
+                        </a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3 p-6">
+                    <a href="login.html" class="mobile-auth-btn login text-center py-3 border border-heritage-gold rounded-lg">Login</a>
+                    <a href="signup.html" class="mobile-auth-btn signup text-center py-3 bg-heritage-wood text-white rounded-lg">Sign Up</a>
+                </div>
+                <div class="flex justify-center gap-3 p-6 border-t border-heritage-gold/20">
+                    <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                    <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== CONTACT HERO SECTION ========== -->
+    <section class="relative pt-40 pb-20 md:pt-52 md:pb-28 bg-cover bg-center" style="background-image: url('/assest/wri.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-br from-heritage-ink/85 to-heritage-wood/75"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-block bg-heritage-gold/20 backdrop-blur-sm px-5 py-2 mb-6 rounded-full">
+                <span class="text-heritage-gold font-serif tracking-widest text-sm">GET IN TOUCH</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight animate-fade-up">
+                Let's Start <span class="text-heritage-gold">Your Journey</span>
+            </h1>
+            <div class="w-24 h-1 bg-heritage-gold mx-auto my-6"></div>
+            <p class="text-xl text-heritage-parchment max-w-2xl mx-auto font-serif">Have questions about our genealogy services? We're here to help you discover your family story.</p>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT FORM & INFO SECTION ========== -->
+    <section class="py-20 bg-heritage-parchment dark:bg-[#1E1B16]">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Left Side - Contact Form -->
+                <div>
+                    <div class="mb-6">
+                        <span class="text-heritage-gold font-serif text-sm tracking-wider">SEND US A MESSAGE</span>
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 text-heritage-ink dark:text-white">Request a <span class="text-heritage-gold">Free Consultation</span></h2>
+                        <div class="heritage-line w-20 mt-3"></div>
+                        <p class="text-lg font-serif text-heritage-ink/70 dark:text-heritage-parchment/70 mt-3">Fill out the form below and one of our genealogists will respond within 24 hours.</p>
+                    </div>
+                    
+                    <form class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-serif font-semibold text-heritage-ink dark:text-heritage-parchment mb-2">First Name *</label>
+                                <input type="text" placeholder="John" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-serif font-semibold text-heritage-ink dark:text-heritage-parchment mb-2">Last Name *</label>
+                                <input type="text" placeholder="Doe" class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-serif font-semibold text-heritage-ink dark:text-heritage-parchment mb-2">Email Address *</label>
+                            <input type="email" placeholder="john.doe@example.com" class="form-input">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-serif font-semibold text-heritage-ink dark:text-heritage-parchment mb-2">Phone Number</label>
+                            <input type="tel" placeholder="(555) 123-4567" class="form-input">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-serif font-semibold text-heritage-ink dark:text-heritage-parchment mb-2">Research Interest *</label>
+                            <select class="form-input appearance-none">
+                                <option value="">Select a service</option>
+                                <option>Family Tree Research</option>
+                                <option>DNA Analysis</option>
+                                <option>Immigration Records</option>
+                                <option>Heritage Book</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-serif font-semibold text-heritage-ink dark:text-heritage-parchment mb-2">Message *</label>
+                            <textarea rows="4" placeholder="Tell us about your family history research goals..." class="form-input resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-heritage w-full justify-center">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        
+                        <p class="text-xs font-serif text-heritage-ink/50 dark:text-heritage-parchment/50 text-center mt-3">
+                            We respect your privacy. Your information will never be shared.
+                        </p>
+                    </form>
+                </div>
+                
+                <!-- Right Side - Contact Information -->
+                <div>
+                    <div class="mb-8">
+                        <span class="text-heritage-gold font-serif text-sm tracking-wider">REACH US DIRECTLY</span>
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 text-heritage-ink dark:text-white">Contact <span class="text-heritage-gold">Information</span></h2>
+                        <div class="heritage-line w-20 mt-3"></div>
+                    </div>
+                    
+                    <div class="space-y-5">
+                        <!-- Address Card -->
+                        <div class="contact-info-card p-5 flex items-start gap-4">
+                            <div class="w-12 h-12 bg-heritage-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-heritage-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg">Visit Our Archive Center</h3>
+                                <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">1876 Archive Street, Suite 100<br>Boston, MA 02110<br>United States</p>
+                                <a href="#" class="text-heritage-gold text-sm font-serif mt-2 inline-block hover:underline">Get Directions →</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone Card -->
+                        <div class="contact-info-card p-5 flex items-start gap-4">
+                            <div class="w-12 h-12 bg-heritage-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone-alt text-heritage-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg">Call Us</h3>
+                                <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">Main Office: <a href="tel:+18884211876" class="hover:text-heritage-gold transition">+1 (888) 421-1876</a></p>
+                                <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">Toll-Free: <a href="tel:+18005551234" class="hover:text-heritage-gold transition">+1 (800) 555-1234</a></p>
+                                <p class="text-sm font-serif text-heritage-gold mt-1">Mon-Fri: 9AM - 6PM EST</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Card -->
+                        <div class="contact-info-card p-5 flex items-start gap-4">
+                            <div class="w-12 h-12 bg-heritage-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-heritage-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg">Email Us</h3>
+                                <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">General Inquiries: <a href="mailto:info@ancestryroots.com" class="hover:text-heritage-gold transition">info@ancestryroots.com</a></p>
+                                <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">Research Team: <a href="mailto:research@ancestryroots.com" class="hover:text-heritage-gold transition">research@ancestryroots.com</a></p>
+                                <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">Support: <a href="mailto:support@ancestryroots.com" class="hover:text-heritage-gold transition">support@ancestryroots.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media Card -->
+                        <div class="contact-info-card p-5 flex items-start gap-4">
+                            <div class="w-12 h-12 bg-heritage-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-share-alt text-heritage-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg">Follow Us</h3>
+                                <div class="flex gap-3 mt-3">
+                                    <a href="#" class="w-10 h-10 bg-heritage-gold/10 rounded-lg flex items-center justify-center hover:bg-heritage-gold transition group">
+                                        <i class="fab fa-facebook-f text-heritage-gold group-hover:text-white"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-heritage-gold/10 rounded-lg flex items-center justify-center hover:bg-heritage-gold transition group">
+                                        <i class="fab fa-instagram text-heritage-gold group-hover:text-white"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-heritage-gold/10 rounded-lg flex items-center justify-center hover:bg-heritage-gold transition group">
+                                        <i class="fab fa-twitter text-heritage-gold group-hover:text-white"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-heritage-gold/10 rounded-lg flex items-center justify-center hover:bg-heritage-gold transition group">
+                                        <i class="fab fa-youtube text-heritage-gold group-hover:text-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MAP SECTION WITH IFRAME - DETAILED BOSTON LOCATION ========== -->
+    <section class="py-12 bg-[#FFF5EA] dark:bg-[#251F17]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-8">
+                <span class="text-heritage-gold font-serif text-sm tracking-widest">FIND US</span>
+                <h2 class="text-3xl font-heading font-bold mt-2 text-heritage-ink dark:text-white">Visit Our <span class="text-heritage-gold">Archive Center</span></h2>
+                <div class="w-16 h-0.5 bg-heritage-gold mx-auto mt-3"></div>
+                <p class="text-sm font-serif text-heritage-ink/70 dark:text-heritage-parchment/70 mt-2">Conveniently located in the heart of Boston's historic district</p>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-xl border-2 border-heritage-gold/20">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.456234567890!2d-71.0588801!3d42.3600825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3708522e4b7e3%3A0x7f3b5b5b5b5b5b5b!2sBoston%20Public%20Library!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ancestral Roots Boston Archive Center">
+                </iframe>
+            </div>
+            <div class="grid md:grid-cols-3 gap-4 mt-6 text-center">
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fas fa-subway text-heritage-gold"></i>
+                    <span class="text-sm font-serif">Near Park Street Station</span>
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fas fa-parking text-heritage-gold"></i>
+                    <span class="text-sm font-serif">Street Parking Available</span>
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fas fa-wheelchair text-heritage-gold"></i>
+                    <span class="text-sm font-serif">Wheelchair Accessible</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="py-20 bg-heritage-parchment dark:bg-[#1E1B16]">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12">
+                <span class="text-heritage-gold font-serif text-sm tracking-widest border-b-2 border-heritage-gold inline-block pb-1">COMMON QUESTIONS</span>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold mt-4 text-heritage-ink dark:text-white">Frequently Asked <span class="text-heritage-gold">Questions</span></h2>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-white dark:bg-[#1A1610] rounded-xl p-5 border border-heritage-gold/20">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <span class="font-heading font-semibold text-lg text-heritage-ink dark:text-white">How long does a typical genealogy research project take?</span>
+                        <i class="fas fa-chevron-down text-heritage-gold transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden mt-3 pt-3 border-t border-heritage-gold/20">
+                        <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">Timelines vary depending on the complexity of your family history. A standard family tree research typically takes 4-6 weeks, while deep ancestry research can take 8-12 weeks. We'll provide a timeline estimate during your free consultation.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-[#1A1610] rounded-xl p-5 border border-heritage-gold/20">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <span class="font-heading font-semibold text-lg text-heritage-ink dark:text-white">What archives do you have access to?</span>
+                        <i class="fas fa-chevron-down text-heritage-gold transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden mt-3 pt-3 border-t border-heritage-gold/20">
+                        <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">We have access to over 50 international archives including Ancestry.com, FamilySearch, MyHeritage, National Archives (US & UK), Ellis Island records, and specialized regional archives across Europe, Latin America, and Asia.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-[#1A1610] rounded-xl p-5 border border-heritage-gold/20">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <span class="font-heading font-semibold text-lg text-heritage-ink dark:text-white">Do you offer DNA analysis with your research?</span>
+                        <i class="fas fa-chevron-down text-heritage-gold transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden mt-3 pt-3 border-t border-heritage-gold/20">
+                        <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">Yes! We offer DNA analysis integration with our traditional research. We can help you interpret your DNA results, connect with genetic matches, and combine DNA evidence with documentary research for a complete picture.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-[#1A1610] rounded-xl p-5 border border-heritage-gold/20">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <span class="font-heading font-semibold text-lg text-heritage-ink dark:text-white">What information do I need to get started?</span>
+                        <i class="fas fa-chevron-down text-heritage-gold transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden mt-3 pt-3 border-t border-heritage-gold/20">
+                        <p class="font-serif text-heritage-ink/70 dark:text-heritage-parchment/70">Any information helps! Start with what you know: names, dates, places of birth/marriage for parents and grandparents. Old photographs, letters, and family stories are also valuable. Don't worry if you have limited information—we'll help guide your research.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="py-16 bg-heritage-wood dark:bg-heritage-wood-dark relative">
+        <div class="absolute inset-0 opacity-10 bg-[url('/assest/old.jpg')]"></div>
+        <div class="container mx-auto px-6 text-center relative">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-3">Ready to Uncover Your Roots?</h2>
+            <p class="text-lg text-heritage-parchment max-w-2xl mx-auto mb-6 font-serif">Schedule your free consultation today. No obligation, just answers.</p>
+            <button class="bg-heritage-gold text-heritage-ink px-8 py-3 font-serif font-bold text-lg hover:bg-white transition shadow-xl rounded-lg inline-flex items-center gap-2">
+                <i class="fas fa-phone-alt"></i> Call (888) 421-1876
+            </button>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER - SAME AS REFERENCE ========== -->
+    <footer class="pt-16 pb-8 bg-heritage-ink dark:bg-[#12100C]">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center gap-3 mb-6 justify-center md:justify-start">
+                        <div class="w-10 h-10 bg-heritage-gold flex items-center justify-center rounded-lg"><i class="fas fa-dna text-white text-xl"></i></div>
+                        <span class="text-2xl font-heading font-bold text-heritage-gold">Ancestry</span>
+                    </div>
+                    <p class="text-heritage-parchment/70 font-serif leading-relaxed mb-6 max-w-xs mx-auto md:mx-0">Preserving family legacies through professional genealogy research since 2008.</p>
+                    <div class="flex gap-3 justify-center md:justify-start">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-white text-xl font-heading font-bold mb-5 footer-heading">Explore</h3>
+                    <ul class="space-y-3 font-serif">
+                        <li><a href="#" class="hover:text-heritage-gold transition block">About Our Archives</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Research Methodology</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Client Success Stories</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Genealogy Blog</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-white text-xl font-heading font-bold mb-5 footer-heading">Services</h3>
+                    <ul class="space-y-3 font-serif">
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Deep Ancestry Research</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">DNA Interpretation</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Family Tree Design</a></li>
+                        <li><a href="#" class="hover:text-heritage-gold transition block">Heritage Travel Planning</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-white text-xl font-heading font-bold mb-5 footer-heading">Connect</h3>
+                    <ul class="space-y-3 font-serif">
+                        <li class="footer-contact-item justify-center md:justify-start">
+                            <i class="fas fa-map-marker-alt text-heritage-gold"></i>
+                            <span>1876 Archive St, Boston, MA</span>
+                        </li>
+                        <li class="footer-contact-item justify-center md:justify-start">
+                            <i class="fas fa-phone-alt text-heritage-gold"></i>
+                            <span>+1 (888) 421-1876</span>
+                        </li>
+                        <li class="footer-contact-item justify-center md:justify-start">
+                            <i class="fas fa-envelope text-heritage-gold"></i>
+                            <span>heritage@ancestralroots.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-heritage-gold/20 mt-12 pt-8 text-center font-serif text-sm text-heritage-parchment/60">
+                <p>© 2026 Ancestral Roots Genealogy. Honoring the past, building future legacies.</p>
+                <p class="mt-1">Certified by the Board for Certification of Genealogists®</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle
+            // Theme Toggle
+            const themeBtn = document.getElementById('theme-toggle');
+            const themeBtnMob = document.getElementById('theme-toggle-mobile');
+            
+            const updateThemeUI = (isDark) => {
+                [themeBtn, themeBtnMob].forEach(b => {
+                    if(b) {
+                        const moon = b.querySelector('.fa-moon');
+                        const sun = b.querySelector('.fa-sun');
+                        if(moon && sun) {
+                            if(isDark) { moon.classList.add('hidden'); sun.classList.remove('hidden'); }
+                            else { moon.classList.remove('hidden'); sun.classList.add('hidden'); }
+                        }
+                        b.classList.toggle('active', isDark);
+                    }
+                });
+            };
+
+            const toggleTheme = () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeUI(isDark);
+            };
+
+            if(themeBtn) themeBtn.addEventListener('click', toggleTheme);
+            if(themeBtnMob) themeBtnMob.addEventListener('click', toggleTheme);
+            
+            if(localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+                updateThemeUI(true);
+            }
+            
+            // RTL Toggle
+            const rtlBtn = document.getElementById('rtl-toggle');
+            const rtlMob = document.getElementById('rtl-toggle-mobile');
+
+            const updateRtlUI = (isRtl) => {
+                const dir = isRtl ? 'rtl' : 'ltr';
+                document.documentElement.dir = dir;
+                document.documentElement.lang = isRtl ? 'ar' : 'en';
+                [rtlBtn, rtlMob].forEach(b => b && b.classList.toggle('active', isRtl));
+            };
+
+            const toggleRtl = () => {
+                const isRtl = document.documentElement.dir !== 'rtl';
+                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
+                updateRtlUI(isRtl);
+            };
+
+            if(rtlBtn) rtlBtn.addEventListener('click', toggleRtl);
+            if(rtlMob) rtlMob.addEventListener('click', toggleRtl);
+
+            if(localStorage.getItem('dir') === 'rtl') {
+                updateRtlUI(true);
+            }
+            
+            // Mobile Menu
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const icon = mobileToggle?.querySelector('i');
+            mobileToggle?.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+                document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            });
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const content = btn.nextElementSibling;
+                    content.classList.toggle('show');
+                    const icon = btn.querySelector('.fa-chevron-down');
+                    if(icon) icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            });
+            
+            // FAQ Accordion
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const icon = button.querySelector('.fa-chevron-down');
+                    answer.classList.toggle('hidden');
+                    icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
